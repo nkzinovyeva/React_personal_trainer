@@ -2,7 +2,8 @@ import React, {useState, useEffect, useRef} from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
-import AddTraining from "./Addtraining"
+import * as moment from "moment";
+import AddTraining from "./AddTraining"
  
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
@@ -24,12 +25,20 @@ function Traininglist() {
 
     const columns = [
         {headerName: 'Activity', field: 'activity', sortable: true, filter: true },
-        {headerName: 'Date', field: 'date', sortable: true, filter: true },
         {headerName: 'Duration', field: 'duration', sortable: true, filter: true },
+        {   
+            headerName: 'Date', 
+            field: 'date',
+            cellRenderer: (row) =>
+                moment.utc(row.date).format('LLL'),
+            sortable: true, 
+            filter: true },
+        
         {
             headerName: "Customer",
             field: "links[2].href",
-            //cellRenderer: row => { }
+            cellRenderer: (row) => row.data.links[2].href.firstname,
+            
         },
         
     ];
@@ -61,7 +70,6 @@ function Traininglist() {
         })
             .then(_ => {
                 setMsg("New training added");
-
             })
             .catch(err => console.error(err))
     };

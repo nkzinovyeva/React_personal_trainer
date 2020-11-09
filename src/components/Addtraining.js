@@ -26,7 +26,6 @@ export default function AddTraining(props) {
     };
 
     const handleClose = () => {
-        addTraining(training);
         setOpen(false);
     };
 

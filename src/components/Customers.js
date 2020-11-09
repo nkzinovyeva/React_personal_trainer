@@ -3,6 +3,7 @@ import { AgGridReact } from 'ag-grid-react';
 import Snackbar from '@material-ui/core/Snackbar';
 import Button from "@material-ui/core/Button";
 import AddCustomer from "./AddCustomer"
+import EditCustomer from "./EditCustomer"
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
@@ -34,12 +35,17 @@ function Customers() {
         {   
             headerName: '', 
             field: 'links[0].href', 
-            cellRendererFramework: row => <Button 
-                                            onClick = {() => deleteCustomer(row.value)} 
-                                            color="secondary" 
-                                            size="small" >Delete
-                                        </Button>
+            cellRendererFramework: params => <Button 
+                                                onClick = {() => deleteCustomer(params)} 
+                                                color="secondary" 
+                                                size="small" >Delete
+                                            </Button>
         },
+        {   
+            headerName: '', 
+            field: 'links[0].href', 
+            cellRendererFramework: params => <EditCustomer updateCustomer={updateCustomer} customer={params.data}/>
+        }    
     ];
     
     const getCustomers = () => {
@@ -50,8 +56,8 @@ function Customers() {
     };
 
     const deleteCustomer = (link) => {
-        if (window.confirm('Are you sure?' + link)) {
-            fetch(link, {
+        if (window.confirm('Are you sure?')) {
+            fetch(link.data.links[0].href, {
               method: 'DELETE'
             })
             .then(_ => getCustomers() )
@@ -77,7 +83,20 @@ function Customers() {
           .catch((err) => console.log(err));
     };
 
-    
+    const updateCustomer = (customer, link) => {
+        fetch(link, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(customer)
+        })
+         .then(_ => getCustomers())
+          .then(_ => {
+            setMsg("Customer updated");
+            setOpen(true);
+        })
+          .catch((err) => console.log(err));
+    };
+
     return (
         <div>
             <AddCustomer addCustomer = {addCustomer}/>
