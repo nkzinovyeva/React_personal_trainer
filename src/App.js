@@ -145,30 +145,3 @@ function App() {
 }
 
 export default App;
-
-/*
-<Route path="/customers">
-              <Customers />
-            </Route>
-            <Route path="/calendar">
-              <Calendar />
-            </Route>
-            <Route path="/statistics">
-              <Statistics />
-            </Route>
-
-import { makeStyles } from '@material-ui/core/styles';
-
-            const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
-
-            */

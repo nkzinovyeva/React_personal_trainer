@@ -53,7 +53,11 @@ export default function EditCustomer (props) {
     return (
       <div>
         <Tooltip title="Edit customer">
-            <IconButton variant="text" color="primary" size="medium" color="primary" aria-label="edit" onClick={handleClickOpen} >
+            <IconButton variant="text" 
+                        color="primary" 
+                        size="medium" 
+                        aria-label="edit" 
+                        onClick={handleClickOpen} >
                 <EditIcon />
             </IconButton> 
         </Tooltip>

@@ -6,21 +6,23 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import IconButton from '@material-ui/core/IconButton';
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+import Tooltip from '@material-ui/core/Tooltip';
  
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
 export default function AddTraining(props) {
+    
     const [open, setOpen] = React.useState(false);
     const [training, setTraining] = React.useState({
         activity: "",
         date: "",
         duration: "",
-        customer: props.link
+        customer: props.customer.links[0].href
     });
     
-    const [msg, setMsg] = useState("");
-
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -34,15 +36,20 @@ export default function AddTraining(props) {
     };
     
     const handleSave = () => {
-        props.AddTraining(training);
+        props.addTraining(training);
         handleClose()
     };
       
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                Add Training
-            </Button>
+            <Tooltip title="Add training">
+                <IconButton color="primary" 
+                            aria-label="Add training"
+                            variant="outlined"
+                            onClick={handleClickOpen} >
+                    <FitnessCenterIcon />
+                </IconButton>
+            </Tooltip>
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -67,15 +74,16 @@ export default function AddTraining(props) {
 
                     <TextField
                         name="date"
+                        type="datetime-local"
                         value={training.date}
                         onChange={inputChanged}
                         margin="dense"
                         id="date"
-                        label="Date"
                         fullWidth
                     />
                     <TextField
                         name="duration"
+                        type="number"
                         value={training.duration}
                         onChange={inputChanged}
                         margin="dense"
