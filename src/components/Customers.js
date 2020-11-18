@@ -36,13 +36,13 @@ function Customers() {
             cellRendererFramework: params => 
                     <AddTraining addTraining = {addTraining} customer={params.data} />
         },
-        {headerName: 'First Name', field: 'firstname', sortable: true, filter: true },
-        {headerName: 'Last Name', field: 'lastname', sortable: true, filter: true },
-        {headerName: 'Email', field: 'email', sortable: true, filter: true },
-        {headerName: 'Phone', field: 'phone', sortable: true, filter: true },
-        {headerName: 'Address', field: 'streetaddress', sortable: true, filter: true },
-        {headerName: 'Postcode', field: 'postcode', sortable: true, filter: true },
-        {headerName: 'City', field: 'city', sortable: true, filter: true },
+        {headerName: 'First Name', field: 'firstname', sortable: true, filter: true, resizable: true },
+        {headerName: 'Last Name', field: 'lastname', sortable: true, filter: true, resizable: true },
+        {headerName: 'Email', field: 'email', sortable: true, filter: true, resizable: true },
+        {headerName: 'Phone', field: 'phone', sortable: true, filter: true, resizable: true },
+        {headerName: 'Address', field: 'streetaddress', sortable: true, filter: true, resizable: true },
+        {headerName: 'Postcode', field: 'postcode', sortable: true, filter: true, resizable: true },
+        {headerName: 'City', field: 'city', sortable: true, filter: true, resizable: true },
         {   
             width: 90,
             headerName: '', 
@@ -53,7 +53,7 @@ function Customers() {
                                                         size="small" 
                                                         aria-label="delete"
                                                         onClick = {() => deleteCustomer(params)} >
-                                                            <DeleteIcon />
+                                                        <DeleteIcon />
                                                 </IconButton>
                                             </Tooltip>
         },
@@ -134,7 +134,7 @@ function Customers() {
     };
 
     return (
-        <div >
+        <div className="Body" >
             <AddCustomer addCustomer = {addCustomer}/>
             <div className = "ag-theme-material" style ={{height: '700px', width: '95%', margin: 'auto'}}>
                 <AgGridReact 
@@ -157,9 +157,8 @@ function Customers() {
                     message={msg}
                 />
             </div>
-    </div> 
-
-   );
-}
+        </div>
+    );
+};
 
 export default Customers;

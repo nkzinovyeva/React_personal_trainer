@@ -23,6 +23,8 @@ import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 
 import Trainings from './components/Trainings.js';
 import Customers from './components/Customers.js';
+import Calendar from './components/Calendar.js';
+import Charts from './components/Charts.js';
 
 const StyledMenu = withStyles({
   paper: {
@@ -113,18 +115,23 @@ function App() {
                         </StyledMenuItem>
                         </Link>
 
-                      <StyledMenuItem>
-                        <ListItemIcon>
-                          <CalendarTodayIcon fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="Calendar" />
-                      </StyledMenuItem>
-                      <StyledMenuItem>
-                        <ListItemIcon>
-                          <EqualizerIcon fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="Statistics" />
-                      </StyledMenuItem>
+                      <Link to = "/calendar" style={{ textDecoration: 'none', color: 'black' }} >  
+                        <StyledMenuItem>
+                          <ListItemIcon>
+                            <CalendarTodayIcon fontSize="small" />
+                          </ListItemIcon>
+                          <ListItemText primary="Calendar" />
+                        </StyledMenuItem>
+                      </Link>
+
+                      <Link to = "/charts" style={{ textDecoration: 'none', color: 'black' }} >  
+                        <StyledMenuItem>
+                          <ListItemIcon>
+                            <EqualizerIcon fontSize="small" />
+                          </ListItemIcon>
+                          <ListItemText primary="Statistics" />
+                        </StyledMenuItem>
+                      </Link>
                     </nav>
                 </StyledMenu>
               </Toolbar>
@@ -135,6 +142,12 @@ function App() {
               </Route>
               <Route path="/trainings">
                 <Trainings />
+              </Route>
+              <Route path="/calendar">
+                <Calendar />
+              </Route>
+              <Route path="/charts">
+                <Charts />
               </Route>
               
             </Switch>

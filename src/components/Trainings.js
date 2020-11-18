@@ -10,6 +10,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
 function Traininglist() {
+    
     const [trainings, setTrainings] = useState([]);
     const [open, setOpen] = useState(false);
     const [msg, setMsg] = useState('');
@@ -18,11 +19,11 @@ function Traininglist() {
 
     useEffect(() => {
             getTrainings();
-        }, []);
+    }, []);
 
     const handleClose = () => {
             setOpen(false)
-        };
+    };
 
     //set columns for the table
     const columns = [
@@ -61,30 +62,29 @@ function Traininglist() {
 
     //get trainings from the database
     const getTrainings = () => {
-            fetch('https://customerrest.herokuapp.com/gettrainings')
-            .then(response => response.json())
-            .then(data => setTrainings(data))
-            .catch(err => console.error(err))
-        };
+        fetch('https://customerrest.herokuapp.com/gettrainings')
+        .then(response => response.json())
+        .then(data => setTrainings(data))
+        .catch(err => console.error(err))
+    };
     
     //delete training
     const deleteTraining = (id) => {
-            console.log(id)
-            if (window.confirm('Are you sure?')) {
-                fetch("https://customerrest.herokuapp.com/api/trainings/" + id, { 
+            //console.log(id)
+        if (window.confirm('Are you sure?')) {
+            fetch("https://customerrest.herokuapp.com/api/trainings/" + id, { 
                     method: "DELETE" })
-                .then((_) => getTrainings())
-                .then((_) => {
+            .then((_) => getTrainings())
+            .then((_) => {
                 setMsg("Training deleted");
                 setOpen(true);
-                })
-                .catch((err) => console.error(err));
-            };
+            })
+            .catch((err) => console.error(err));
         };
-
-        
+    };
+ 
     return (
-        <div>
+        <div className="Body">
             <div className = "ag-theme-material" style ={{height: '700px', width: '95%', margin: 'auto'}}>
                 <AgGridReact 
                     ref = {gridRef}
@@ -109,6 +109,6 @@ function Traininglist() {
         </div>
     );
 
-}
+};
 
 export default Traininglist;

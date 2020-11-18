@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -13,7 +13,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
-export default function AddTraining(props) {
+function AddTraining(props) {
     
     const [open, setOpen] = React.useState(false);
     const [training, setTraining] = React.useState({
@@ -103,4 +103,6 @@ export default function AddTraining(props) {
             </Dialog>
         </div>
     );
-}
+};
+
+export default AddTraining;

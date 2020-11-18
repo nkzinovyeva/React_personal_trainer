@@ -13,7 +13,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
-
 function AddCustomer(props) {
     const [open, setOpen] = useState(false);
     const [customer, setCustomer] = useState({
@@ -133,6 +132,6 @@ function AddCustomer(props) {
       </Dialog>
     </div>
     );
-}
+};
 
 export default AddCustomer;

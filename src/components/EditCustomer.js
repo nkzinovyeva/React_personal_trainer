@@ -10,48 +10,48 @@ import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
+function EditCustomer (props) {
+  
+  const [open, setOpen] = React.useState(false);
+  const [customer, setCustomer] = React.useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone: '',
+    streetaddress: '',
+    postcode: '',
+    city: ''
+  });
 
-export default function EditCustomer (props) {
-
-    const [open, setOpen] = React.useState(false);
-    const [customer, setCustomer] = React.useState({
-        firstname: '',
-        lastname: '',
-        email: '',
-        phone: '',
-        streetaddress: '',
-        postcode: '',
-        city: ''
+  const handleClickOpen = () => {
+    setCustomer({
+      firstname: props.customer.firstname,
+      lastname: props.customer.lastname,
+      email: props.customer.email,
+      phone: props.customer.phone,
+      streetaddress: props.customer.streetaddress,
+      postcode: props.customer.postcode,
+      city: props.customer.city
     })
-
-    const handleClickOpen = () => {
-      setCustomer({
-          firstname: props.customer.firstname,
-          lastname: props.customer.lastname,
-          email: props.customer.email,
-          phone: props.customer.phone,
-          streetaddress: props.customer.streetaddress,
-          postcode: props.customer.postcode,
-          city: props.customer.city
-      })
-      setOpen(true);
-    };
+    setOpen(true);
+  };
   
-    const handleClose = () => {
-      setOpen(false);
-    };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    const updateCustomer = () => {
-        props.updateCustomer(customer, props.customer.links[0].href);
-        handleClose();
-    }
+  //update handler
+  const updateCustomer = () => {
+    props.updateCustomer(customer, props.customer.links[0].href);
+    handleClose();
+  };
 
-    const handleInputChange = (event) => {
-        setCustomer({...customer, [event.target.name]: event.target.value})
-    }
+  const handleInputChange = (event) => {
+    setCustomer({...customer, [event.target.name]: event.target.value})
+  };
   
-    return (
-      <div>
+  return (
+    <div>
         <Tooltip title="Edit customer">
             <IconButton variant="text" 
                         color="primary" 
@@ -138,6 +138,8 @@ export default function EditCustomer (props) {
             </Button>
           </DialogActions>
         </Dialog>
-        </div>
-        );
-}
+    </div>
+  );
+};
+
+export default EditCustomer;
