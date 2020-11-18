@@ -14,35 +14,36 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
 function AddCustomer(props) {
-    const [open, setOpen] = useState(false);
-    const [customer, setCustomer] = useState({
-      firstname: "",
-      lastname: "",
-      streetaddress: "",
-      postcode: "",
-      city: "",
-      email: "",
-      phone: ""
-    });
     
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
+  const [open, setOpen] = useState(false);
+  const [customer, setCustomer] = useState({
+    firstname: "",
+    lastname: "",
+    streetaddress: "",
+    postcode: "",
+    city: "",
+    email: "",
+    phone: ""
+  });
+    
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
      
-    const handleClose = () => {
-      setOpen(false);
-	  };
+  const handleClose = () => {
+    setOpen(false);
+	};
 
-	  const handleInputChange = event => {
-		  setCustomer({ ...customer, [event.target.name]: event.target.value });
-    };
+	const handleInputChange = event => {
+    setCustomer({ ...customer, [event.target.name]: event.target.value });
+  };
     
-    const handleSave = () => {
-        props.addCustomer(customer);
-        handleClose()
-    };
+  const handleSave = () => {
+    props.addCustomer(customer);
+    handleClose()
+  };
 
-    return (
+  return (
     <div> 
       <Tooltip title="Add a new customer" >
             <IconButton variant="contained"

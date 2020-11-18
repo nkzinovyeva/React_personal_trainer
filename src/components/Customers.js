@@ -6,7 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
-import AddTraining from "./AddTraining";
+import AddTraining from "./AddTraining.js";
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
