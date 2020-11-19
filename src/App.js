@@ -25,6 +25,7 @@ import Trainings from './components/Trainings.js';
 import Customers from './components/Customers.js';
 import Calendar from './components/Calendar.js';
 import Charts from './components/Charts.js';
+import Home from './components/Home'
 
 const StyledMenu = withStyles({
   paper: {
@@ -86,7 +87,7 @@ function App() {
                   <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" >
-                  Personal trainer
+                  <Link to = "/" style={{ textDecoration: 'none', color: 'white' }} >  Personal trainer </Link>
                 </Typography>
                 <StyledMenu
                       id="customized-menu"
@@ -95,6 +96,7 @@ function App() {
                       open={Boolean(anchorEl)}
                       onClick={handleClose}
                     >
+                      
                     <nav>
  
                       <Link to = "/customers" style={{ textDecoration: 'none', color: 'black' }} >  
@@ -138,6 +140,9 @@ function App() {
               </Toolbar>
           </AppBar>
           <Switch>
+              <Route exact path ="/">
+                <Home /> 
+              </Route>
               <Route path="/customers">
                 <Customers />
               </Route>
@@ -150,7 +155,6 @@ function App() {
               <Route path="/charts">
                 <Charts />
               </Route>
-              
             </Switch>
             </div>
         </Router>
