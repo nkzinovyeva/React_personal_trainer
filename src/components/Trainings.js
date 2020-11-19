@@ -14,7 +14,6 @@ function Traininglist() {
     const [trainings, setTrainings] = useState([]);
     const [open, setOpen] = useState(false);
     const [msg, setMsg] = useState('');
-
     const gridRef = useRef();
 
     useEffect(() => {

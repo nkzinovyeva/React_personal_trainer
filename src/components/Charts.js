@@ -5,7 +5,6 @@ import '../App.css';
 function Stats() {
     
     const [data, setData] = useState([]);
-    
     // Load the full build.
     const _ = require('lodash');
   

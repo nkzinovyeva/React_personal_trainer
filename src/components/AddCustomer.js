@@ -43,6 +43,7 @@ function AddCustomer(props) {
     handleClose()
   };
 
+  
   return (
     <div> 
       <Tooltip title="Add a new customer" >

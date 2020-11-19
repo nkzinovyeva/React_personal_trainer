@@ -3,6 +3,7 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import * as moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
+
 function SportsCalendar() {
   
   const localizer = momentLocalizer(moment);
@@ -16,7 +17,7 @@ function SportsCalendar() {
     getTrainings();
   }, []);
   
-    //get trainings from the database
+  //get trainings from the database
   const getTrainings = () => {
     fetch('https://customerrest.herokuapp.com/gettrainings')
     .then((response) => response.json())
@@ -43,6 +44,6 @@ function SportsCalendar() {
         />
       </div>
   );
-}
+};
 
 export default SportsCalendar;
