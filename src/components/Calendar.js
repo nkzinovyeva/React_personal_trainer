@@ -40,7 +40,7 @@ function SportsCalendar() {
           defaultDate={new Date()}
           defaultView="month"
           events={trainings}
-          style={{ height: '700px', width: '95%', margin: '20px'} }
+          style={{ height:"700px", width: "95%", margin: "20px"} }
         />
       </div>
   );

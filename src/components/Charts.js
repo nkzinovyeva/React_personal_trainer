@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { XAxis, LineChart, Tooltip, CartesianGrid, Line, BarChart, Bar, YAxis } from "recharts";
-import '../App.css';
+import "../App.css";
 
 function Stats() {
     
     const [data, setData] = useState([]);
     // Load the full build.
-    const _ = require('lodash');
+    const _ = require("lodash");
   
     useEffect(() => {
         getTrainings();
@@ -14,14 +14,14 @@ function Stats() {
 
     //get trainings from the database
     const getTrainings = () => {
-      fetch('https://customerrest.herokuapp.com/gettrainings')
+      fetch("https://customerrest.herokuapp.com/gettrainings")
       .then(response => response.json())
       .then(data => setData(data))
       .catch(err => console.error(err))
     };
 
     //grouping by activity
-    const group = _.groupBy(data, 'activity');
+    const group = _.groupBy(data, "activity");
         //console.log(group)
     
     //summarize duration in the new array
@@ -33,8 +33,8 @@ function Stats() {
 
     return (
         <div className="Body">
-            <div className='row'>
-                <div className='column'>
+            <div className="row">
+                <div className="column">
                     <BarChart
                         width={600}
                         height={400}
@@ -46,7 +46,7 @@ function Stats() {
                         <Bar dataKey="duration" fill="lightgreen" />
                     </BarChart>
                 </div>
-                <div className='column'>
+                <div className="column">
                     <LineChart
                         width={600}
                         height={400}
@@ -66,16 +66,16 @@ function Stats() {
 export default Stats;
 
  // The `_.property` iteratee shorthand.
-    //_.groupBy(data, 'activity');
-    //_.map(data, _.sumBy(data, 'duration'));
+    //_.groupBy(data, "activity");
+    //_.map(data, _.sumBy(data, "duration"));
     
         
         
-    // => { '3': ['one', 'two'], '5': ['three'] }
+    // => { "3": ["one", "two"], "5": ["three"] }
     // The `_.property` iteratee shorthand.
-    //_.map(data, 'activity');
+    //_.map(data, "activity");
     
-    // => ['barney', 'fred']   
+    // => ["barney", "fred"]   
 /*<LineChart
   width={400}
   height={400}

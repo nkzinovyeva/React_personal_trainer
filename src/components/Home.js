@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper } from '@material-ui/core';
+import { Paper } from "@material-ui/core";
 
 
 function Home() {
@@ -8,7 +8,7 @@ function Home() {
         <div>
             <Paper style={styles.paperMain}> 
                 <div >
-                    <h1 style={{color: 'darkblue'}}>Welcome to the fitness app!</h1>
+                    <h1 style={{color: "darkblue"}}>Welcome to the fitness app!</h1>
                     <h4>About the project and task</h4>
                     <p>This project is a part of assessment for the Front-End development course at Haaga-Helia UAS.
                     <h4>Task Case:</h4>

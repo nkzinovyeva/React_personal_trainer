@@ -1,21 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import { AgGridReact } from 'ag-grid-react';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Tooltip from '@material-ui/core/Tooltip';
+import { AgGridReact } from "ag-grid-react";
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Tooltip from "@material-ui/core/Tooltip";
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
 import AddTraining from "./Addtraining";
 
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-material.css';
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-material.css";
 
 function Customers() {
 
     const [customers, setCustomers] = useState([]);
     const [open, setOpen] = useState(false);
-    const [msg, setMsg] = useState('');
+    const [msg, setMsg] = useState("");
     const gridRef = useRef();
 
     useEffect(() => {
@@ -30,22 +30,22 @@ function Customers() {
     const columns = [
         {   
             width: 90,
-            headerName: '', 
-            field: 'links[0].href', 
+            headerName: "", 
+            field: "links[0].href", 
             cellRendererFramework: params => 
                     <AddTraining addTraining = {addTraining} customer={params.data} />
         },
-        {headerName: 'First Name', field: 'firstname', sortable: true, filter: true, resizable: true },
-        {headerName: 'Last Name', field: 'lastname', sortable: true, filter: true, resizable: true },
-        {headerName: 'Email', field: 'email', sortable: true, filter: true, resizable: true },
-        {headerName: 'Phone', field: 'phone', sortable: true, filter: true, resizable: true },
-        {headerName: 'Address', field: 'streetaddress', sortable: true, filter: true, resizable: true },
-        {headerName: 'Postcode', field: 'postcode', sortable: true, filter: true, resizable: true },
-        {headerName: 'City', field: 'city', sortable: true, filter: true, resizable: true },
+        {headerName: "First Name", field: "firstname", sortable: true, filter: true, resizable: true },
+        {headerName: "Last Name", field: "lastname", sortable: true, filter: true, resizable: true },
+        {headerName: "Email", field: "email", sortable: true, filter: true, resizable: true },
+        {headerName: "Phone", field: "phone", sortable: true, filter: true, resizable: true },
+        {headerName: "Address", field: "streetaddress", sortable: true, filter: true, resizable: true },
+        {headerName: "Postcode", field: "postcode", sortable: true, filter: true, resizable: true },
+        {headerName: "City", field: "city", sortable: true, filter: true, resizable: true },
         {   
             width: 90,
-            headerName: '', 
-            field: 'links[0].href', 
+            headerName: "", 
+            field: "links[0].href", 
             cellRendererFramework: params => <Tooltip title="Delete customer">
                                                 <IconButton variant="text" 
                                                         color="secondary" 
@@ -58,15 +58,15 @@ function Customers() {
         },
         {   
             width: 90,
-            headerName: '', 
-            field: 'links[0].href', 
+            headerName: "", 
+            field: "links[0].href", 
             cellRendererFramework: params => <EditCustomer updateCustomer={updateCustomer} customer={params.data}/>
         }    
     ];
     
     //get customers from the database
     const getCustomers = () => {
-        fetch('https://customerrest.herokuapp.com/api/customers')
+        fetch("https://customerrest.herokuapp.com/api/customers")
             .then(response => response.json())
             .then(data => setCustomers(data.content))
             .catch(err => console.error(err));
@@ -74,9 +74,9 @@ function Customers() {
 
     //delete customer
     const deleteCustomer = (link) => {
-        if (window.confirm('Are you sure?')) {
+        if (window.confirm("Are you sure?")) {
             fetch(link.data.links[0].href, {
-              method: 'DELETE'
+              method: "DELETE"
             })
             .then(_ => getCustomers() )
             .then(_ => {
@@ -105,8 +105,8 @@ function Customers() {
     //update customer
     const updateCustomer = (customer, link) => {
         fetch(link, {
-            method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(customer)
         })
         .then(_ => getCustomers())
@@ -135,7 +135,7 @@ function Customers() {
     return (
         <div className="Body" >
             <AddCustomer addCustomer = {addCustomer}/>
-            <div className = "ag-theme-material" style ={{height: '700px', width: '95%', margin: 'auto'}}>
+            <div className = "ag-theme-material" style ={{height: "700px", width: "95%", margin: "auto"}}>
                 <AgGridReact 
                     ref = {gridRef}
                     onGridReady = { params => {
