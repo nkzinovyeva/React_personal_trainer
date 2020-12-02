@@ -1,5 +1,5 @@
 
-# Final Project for FrontEnd Development Course
+# An Individual Final Project for the FrontEnd Development Course
 
 ### Link
 
