@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { XAxis, LineChart, Tooltip, CartesianGrid, Line, BarChart, Bar, YAxis } from "recharts";
 import "../App.css";
 
+/*
+* statistics page
+*/
 function Stats() {
     
     const [data, setData] = useState([]);
@@ -22,14 +25,12 @@ function Stats() {
 
     //grouping by activity
     const group = _.groupBy(data, "activity");
-        //console.log(group)
     
     //summarize duration in the new array
     const sum = _.map(group, (value, key) => ({
         activity: key,
         duration: _.sumBy(value, "duration"),
     }));
-        //console.log(sum)
 
     return (
         <div className="Body">

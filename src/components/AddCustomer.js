@@ -1,20 +1,16 @@
 import React, {useState} from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import {Button, TextField, Dialog, DialogActions, DialogContent, Tooltip, 
+  DialogContentText, DialogTitle, IconButton}  from "@material-ui/core";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
-
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
 
+/*
+* add customer modal
+*/
 function AddCustomer(props) {
-    
+
+  //set constants  
   const [open, setOpen] = useState(false);
   const [customer, setCustomer] = useState({
     firstname: "",
@@ -43,7 +39,6 @@ function AddCustomer(props) {
     handleClose()
   };
 
-  
   return (
     <div> 
       <Tooltip title="Add a new customer" >

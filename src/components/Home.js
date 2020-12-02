@@ -1,7 +1,9 @@
 import React from "react";
 import { Paper } from "@material-ui/core";
 
-
+/*
+* home info page
+*/
 function Home() {
 
     return (
@@ -31,6 +33,7 @@ function Home() {
         </div>
     );
 }
+
 const styles = {
     paperMain: {
         width: "95%",

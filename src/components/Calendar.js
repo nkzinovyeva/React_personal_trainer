@@ -3,9 +3,12 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import * as moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-
+/*
+* calendar page
+*/
 function SportsCalendar() {
   
+  //set constants
   const localizer = momentLocalizer(moment);
   const [trainings, setTrainings] = useState([{
       title: "",

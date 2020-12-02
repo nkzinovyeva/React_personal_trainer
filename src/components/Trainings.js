@@ -1,16 +1,17 @@
 import React, {useState, useEffect, useRef} from "react";
 import { AgGridReact } from "ag-grid-react";
-import Snackbar from "@material-ui/core/Snackbar";
+import {Snackbar, IconButton, Tooltip} from "@material-ui/core";
 import * as moment from "moment";
-import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Tooltip from "@material-ui/core/Tooltip";
- 
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
 
+/*
+* Trainings page
+*/
 function Traininglist() {
     
+    //set constants
     const [trainings, setTrainings] = useState([]);
     const [open, setOpen] = useState(false);
     const [msg, setMsg] = useState("");
@@ -22,6 +23,29 @@ function Traininglist() {
 
     const handleClose = () => {
             setOpen(false)
+    };
+
+    //get trainings from the database
+    const getTrainings = () => {
+        fetch("https://customerrest.herokuapp.com/gettrainings")
+        .then(response => response.json())
+        .then(data => setTrainings(data))
+        .catch(err => console.error(err))
+    };
+    
+    //delete training
+    const deleteTraining = (id) => {
+            //console.log(id)
+        if (window.confirm("Are you sure?")) {
+            fetch("https://customerrest.herokuapp.com/api/trainings/" + id, { 
+                    method: "DELETE" })
+            .then((_) => getTrainings())
+            .then((_) => {
+                setMsg("Training deleted");
+                setOpen(true);
+            })
+            .catch((err) => console.error(err));
+        };
     };
 
     //set columns for the table
@@ -58,29 +82,6 @@ function Traininglist() {
                                                 </Tooltip>
             }, 
     ];
-
-    //get trainings from the database
-    const getTrainings = () => {
-        fetch("https://customerrest.herokuapp.com/gettrainings")
-        .then(response => response.json())
-        .then(data => setTrainings(data))
-        .catch(err => console.error(err))
-    };
-    
-    //delete training
-    const deleteTraining = (id) => {
-            //console.log(id)
-        if (window.confirm("Are you sure?")) {
-            fetch("https://customerrest.herokuapp.com/api/trainings/" + id, { 
-                    method: "DELETE" })
-            .then((_) => getTrainings())
-            .then((_) => {
-                setMsg("Training deleted");
-                setOpen(true);
-            })
-            .catch((err) => console.error(err));
-        };
-    };
  
     return (
         <div className="Body">

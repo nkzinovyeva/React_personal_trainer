@@ -1,18 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AgGridReact } from "ag-grid-react";
-import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
+import {Snackbar, Tooltip, IconButton} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Tooltip from "@material-ui/core/Tooltip";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-material.css";
+
 import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
 import AddTraining from "./Addtraining";
 
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-material.css";
 
+/*
+* customers page
+*/
 function Customers() {
 
+    //set constants
     const [customers, setCustomers] = useState([]);
     const [open, setOpen] = useState(false);
     const [msg, setMsg] = useState("");
