@@ -18,11 +18,11 @@ function Traininglist() {
     const gridRef = useRef();
 
     useEffect(() => {
-            getTrainings();
+        getTrainings();
     }, []);
 
     const handleClose = () => {
-            setOpen(false)
+        setOpen(false)
     };
 
     //get trainings from the database
@@ -52,23 +52,21 @@ function Traininglist() {
     const columns = [
             {headerName: "Activity", field: "activity", sortable: true, filter: true },
             {headerName: "Duration", field: "duration", sortable: true, filter: true, width: 120 },
-            {   
-                headerName: "Date", 
-                cellRendererFramework: (row) =>
-                    moment(row.data.date).format("MMMM Do YYYY, h:mm"),
-                sortable: true, 
-                filter: true 
+            {headerName: "Date", 
+                valueGetter: function date(params) {
+                    return moment(params.data.date).format("MMMM Do YYYY, h:mm")
+                },
+            sortable: true, 
+            filter: true 
             },
-            {
-                headerName: "Customer",
-                field: "customer",
-                cellRenderer: (row) =>
-                    row.data.customer.firstname + " " + row.data.customer.lastname,
-                sortable: true, 
-                filter: true  
+            {headerName: "Customer",
+                valueGetter: function customer(params) {
+                    return params.data.customer.firstname + " " + params.data.customer.lastname
+                },
+            sortable: true, 
+            filter: true  
             },
-            {   
-                width: 80,
+            {width: 80,
                 headerName: "", 
                 field: "id", 
                 cellRendererFramework: params => <Tooltip title="Delete training">

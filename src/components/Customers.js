@@ -31,9 +31,7 @@ function Customers() {
     
     //set columns for the table
     const columns = [
-        {   
-            width: 90,
-            headerName: "", 
+        {headerName: "", 
             field: "links[0].href", 
             cellRendererFramework: params => 
                     <AddTraining addTraining = {addTraining} customer={params.data} />
@@ -45,9 +43,7 @@ function Customers() {
         {headerName: "Address", field: "streetaddress", sortable: true, filter: true, resizable: true },
         {headerName: "Postcode", field: "postcode", sortable: true, filter: true, resizable: true },
         {headerName: "City", field: "city", sortable: true, filter: true, resizable: true },
-        {   
-            width: 90,
-            headerName: "", 
+        {headerName: "", 
             field: "links[0].href", 
             cellRendererFramework: params => <Tooltip title="Delete customer">
                                                 <IconButton variant="text" 
@@ -59,9 +55,7 @@ function Customers() {
                                                 </IconButton>
                                             </Tooltip>
         },
-        {   
-            width: 90,
-            headerName: "", 
+        {headerName: "", 
             field: "links[0].href", 
             cellRendererFramework: params => <EditCustomer updateCustomer={updateCustomer} customer={params.data}/>
         }    
