@@ -8,7 +8,8 @@ https://master.d3mv0oc4j7xd90.amplifyapp.com
 ### Preview
 
 <img src="images/img1.png" width='600'>
-<img src="images/img2.png" width='200'><img src="images/img3.png" width='200'><img src="images/img4.png" width='200'><img src="images/img5.png" width='200'><img src="images/img6.png" width='200'><img src="images/img7.png" width='200'>
+<img src="images/img2.png" width='300'> <img src="images/img3.png" width='300'> <img src="images/img4.png" width='300'>
+<img src="images/img5.png" width='300'> <img src="images/img6.png" width='300'> <img src="images/img7.png" width='300'>
 
 _______________________________________
 # Getting Started with Create React App
